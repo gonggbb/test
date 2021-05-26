@@ -1,6 +1,10 @@
 <template>
   <div>
-
+      <el-alert
+         title="欢迎使用element"
+         type="success"
+         effect="dark">
+     </el-alert>
   </div>
 </template>
 
