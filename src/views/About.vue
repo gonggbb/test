@@ -1,5 +1,26 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div>
+
   </div>
 </template>
+
+<script>
+  export default {
+    mounted () {
+       this.$axios({
+                method:"get",
+                url:"/text.json",
+                dataType:'json'
+            }).then(res=>{
+              console.log("!!!!!!!!!!!",res)
+            }).catch(err=>{
+              console.log(err)
+            })
+    }
+    
+  }
+</script>
+
+<style lang="scss" scoped>
+
+</style>
