@@ -1,7 +1,6 @@
 <template>
         <div>
                 <div class="echartBox" ref="echartBox"></div>
-                echart
         </div>
 </template>
 

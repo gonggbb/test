@@ -12,6 +12,14 @@ export default {
   name: 'Home',
   components: {
     HelloWorld
-  }
+  },
+  mounted () {
+    this.name();
+  },
+  methods: {
+    name() {
+      console.log("rocess.env.BASE_URL",this.rocess.env.BASE_URL)
+    }
+  },
 }
 </script>
