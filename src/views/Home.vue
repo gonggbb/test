@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     name() {
-      console.log("rocess.env.BASE_URL",this.rocess.env.BASE_URL)
+      // console.log("rocess.env.BASE_URL",this.rocess.env.BASE_URL)
     }
   },
 }
