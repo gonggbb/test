@@ -64,9 +64,14 @@
 .all-screen{
         width: 100%;
         height: 100vh;
-        background-image: url("../assets/img/zimuge.jpg") ;
+        background-image: url("../assets/img/kebi.gif") ;
+        // background-image: url("../assets/img/kuli.jpg") ;
         background-repeat: no-repeat;
-        background-size: 100% 100%;
+        background-attachment: fixed;  
+        background-size:cover; 
+        background-position: center center; 
+        //2
+        // background-size: 100% auto;
 }
 .login{
         height: 400px;

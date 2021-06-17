@@ -4,6 +4,7 @@
       <router-link to="/main/home">组件使用</router-link> 
       <router-link to="/main/element">elemnt ui使用</router-link> 
       <router-link to="/main/echart">echart使用</router-link>
+      <router-link to="/login" style="position: absolute;right: 5px;">退出</router-link>
     </div>
     <div id="nav-body">
        <router-view/>
@@ -36,6 +37,6 @@
   }
 }
 #nav-body{
-  background: rgb(194, 196, 204);
+  // background: rgb(194, 196, 204);
 }
 </style>

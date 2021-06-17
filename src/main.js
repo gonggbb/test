@@ -8,6 +8,11 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 import echarts from 'echarts'
 import echartsGL from 'echarts-gl'
+
+import BaiduMap from 'vue-baidu-map'
+Vue.use(BaiduMap, {
+  ak: "Fo5NqABsiG6n9tZ1zQBEuHw6oOGiDPGF"
+})
 Vue.prototype.$echartsGL = echartsGL
 Vue.prototype.$echarts = echarts
 
