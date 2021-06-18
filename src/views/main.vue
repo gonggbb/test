@@ -4,14 +4,16 @@
       <router-link to="/main/home">组件使用</router-link> 
       <router-link to="/main/element">elemnt ui使用</router-link> 
       <router-link to="/main/echart">echart使用</router-link>
+      <router-link to="/main/audio">音频使用</router-link>
+      <router-link to="/main/video">视频使用</router-link>
       <router-link to="/login" style="position: absolute;right: 5px;">退出</router-link>
     </div>
     <div id="nav-body">
        <router-view/>
+   
     </div>
   </div>
 </template>
-
 <style lang="scss">
 #app-main{
   font-family: Avenir, Helvetica, Arial, sans-serif;

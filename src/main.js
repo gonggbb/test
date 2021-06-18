@@ -10,6 +10,11 @@ import echarts from 'echarts'
 import echartsGL from 'echarts-gl'
 
 import BaiduMap from 'vue-baidu-map'
+// import VuevideoPlayer from 'vue-video-player';
+
+// import 'video.js/dist/video-js.css';
+
+// Vue.use(VuevideoPlayer);
 Vue.use(BaiduMap, {
   ak: "Fo5NqABsiG6n9tZ1zQBEuHw6oOGiDPGF"
 })
