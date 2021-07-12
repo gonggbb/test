@@ -1,86 +1,109 @@
 <template>
-        <div class="echart_body">
+        <div >
                 <!-- <div class="echartBox" ref="echartBox"></div> -->
+              <div class="echart_body">
                 <div class="echartBox" ref="echartBox"></div>
                 <div class="echartBar" ref="echartBar"></div>
+              </div>
+             <div id="map" style="width: 100%; height: 500px;"></div>
+
         </div>
 </template>
-
 <script>
-// import 'echarts-gl';
-import  'echarts-liquidfill'
+import 'echarts/map/js/china'
         export default {
                 name:"echart",
                 mounted () {
                         // this.getData()
                         this.Histogram3D()
                         this.echartBar()
+                        this.map()
                 },
                 methods: {
-                //    getData(){
-                //       this.$axios({
-                //           method:"get",
-                //           url:"https://cdn.jsdelivr.net/gh/apache/echarts-website@asf-site/examples/data-gl/asset/data/flights.json",
-                //           dataType:'json'
-                //       }).then(res=>{
-                //         let {data} =  res
-                //         // var option;
-                //         console.log("!!!!!!!!!!!",data)
-                //         var ROOT_PATH = 'https://cdn.jsdelivr.net/gh/apache/echarts-website@asf-site/examples';
-                //         var myChart = this.$echarts.init(this.$refs.echartBox);
-                //           function getAirportCoord(idx) {
-                //               return [data.airports[idx][3], data.airports[idx][4]];
-                //           }
-                //           var routes = data.routes.map(function(airline) {
-                //               return [
-                //                   getAirportCoord(airline[1]),
-                //                   getAirportCoord(airline[2])
-                //               ];
-                //           });
-                      
-                //           myChart.setOption({
-                //               backgroundColor: '#000',
-                //               globe: {
-                //                   baseTexture: ROOT_PATH + '/data-gl/asset/world.topo.bathy.200401.jpg',
-                //                   heightTexture: ROOT_PATH + '/data-gl/asset/bathymetry_bw_composite_4k.jpg',
-                      
-                //                   shading: 'lambert',
-                      
-                //                   light: {
-                //                       ambient: {
-                //                           intensity: 0.4
-                //                       },
-                //                       main: {
-                //                           intensity: 0.4
-                //                       }
-                //                   },
-                      
-                //                   viewControl: {
-                //                       autoRotate: false
-                //                   }
-                //               },
-                //               series: {
-                      
-                //                   type: 'lines3D',
-                      
-                //                   coordinateSystem: 'globe',
-                      
-                //                   blendMode: 'lighter',
-                      
-                //                   lineStyle: {
-                //                       width: 1,
-                //                       color: 'rgb(50, 50, 150)',
-                //                       opacity: 0.1
-                //                   },
-                      
-                //                   data: routes
-                //               }
-                //           });
-                //         // myChart.setOption(option);  
-                //       }).catch(err=>{
-                //         console.log(err)
-                //       })
-                //    },
+                   map() {
+                     var map = this.$echarts.init(document.getElementById('map'));//初始化
+	                  var option={//配置项（名称）
+			          	  title: {
+                          text: '中华人民共和国2110年13月平均降雨量',
+                          subtext: '练习地图',
+                          x: 'center'
+                      },
+                      tooltip: {//提示框组件。
+                          trigger: 'item'//数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
+                      },
+                      visualMap: {//颜色的设置  dataRange
+                          x: 'left',
+                          y: 'center',
+                          splitList: [
+                              { start: 1500, color: '#4682B4' },
+                              { start: 900, end: 1500, color: 'lightskyblue' },
+                              { start: 310, end: 1000, color: '#FF7F50' },
+                              { start: 200, end: 300, color: '	#FF4500' },
+                              { start: 50, end: 200, color: 'lightcoral', label: '10 到 200（想念暴雨）' },
+                              { start: 0, end: 50, label: '<50 干巴巴', color: 'darkred' },
+                          ],
+                      },
+                      series: [
+                          {
+                              name: '降雨量（毫米）',
+                              type: 'map',
+                              mapType: 'china',
+                              roam: true,//是否开启鼠标缩放和平移漫游
+                              itemStyle: {
+                                  normal: {//是图形在默认状态下的样式
+                                      label: {
+                                          show: true,//是否显示标签
+                                          textStyle: {
+                                              color: "rgb(249, 249, 249)"
+                                          }
+                                      }
+                                  },
+                                  emphasis: {//是图形在高亮状态下的样式,比如在鼠标悬浮或者图例联动高亮时
+                                      label: { show: true }
+                                  }
+                              },
+                              top: "3%",
+                              data: [
+                                  { name: '北京', value: 1122 },
+                                  { name: '天津', value: Math.round(Math.random() * 2000) },
+                                  { name: '上海', value: Math.round(Math.random() * 2000) },
+                                  { name: '重庆', value: Math.round(Math.random() * 2000) },
+                                  { name: '河北', value: 0 },
+                                  { name: '河南', value: Math.round(Math.random() * 2000) },
+                                  { name: '云南', value: 500 },
+                                  { name: '辽宁', value: 305 },
+                                  { name: '黑龙江', value: Math.round(Math.random() * 2000) },
+                                  { name: '湖南', value: 200 },
+                                  { name: '安徽', value: Math.round(Math.random() * 2000) },
+                                  { name: '山东', value: Math.round(Math.random() * 2000) },
+                                  { name: '新疆', value: 34 },
+                                  { name: '江苏', value: Math.round(Math.random() * 2000) },
+                                  { name: '浙江', value: Math.round(Math.random() * 2000) },
+                                  { name: '江西', value: Math.round(Math.random() * 2000) },
+                                  { name: '湖北', value: Math.round(Math.random() * 2000) },
+                                  { name: '广西', value: Math.round(Math.random() * 2000) },
+                                  { name: '甘肃', value: Math.round(Math.random() * 2000) },
+                                  { name: '山西', value: Math.round(Math.random() * 2000) },
+                                  { name: '内蒙古', value: Math.round(Math.random() * 2000) },
+                                  { name: '陕西', value: Math.round(Math.random() * 2000) },
+                                  { name: '吉林', value: Math.round(Math.random() * 2000) },
+                                  { name: '福建', value: Math.round(Math.random() * 2000) },
+                                  { name: '贵州', value: Math.round(Math.random() * 2000) },
+                                  { name: '广东', value: Math.round(Math.random() * 2000) },
+                                  { name: '青海', value: Math.round(Math.random() * 2000) },
+                                  { name: '西藏', value: 2000 },
+                                  { name: '四川', value: Math.round(Math.random() * 2000) },
+                                  { name: '宁夏', value: Math.round(Math.random() * 2000) },
+                                  { name: '海南', value: Math.round(Math.random() * 2000) },
+                                  { name: '台湾', value: Math.round(Math.random() * 2000) },
+                                  { name: '香港', value: Math.round(Math.random() * 2000) },
+                                  { name: '澳门', value: Math.round(Math.random() * 2000) }
+                              ]
+                          }
+                      ] 
+			          }
+			          map.setOption(option);//用配置项配置（动词）echarts
+                    },
 
                 //柱状图
                 Histogram3D(){

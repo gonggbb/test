@@ -6,6 +6,7 @@
       <router-link to="/main/echart">echart使用</router-link>
       <router-link to="/main/audio">音频使用</router-link>
       <router-link to="/main/video">视频使用</router-link>
+      <router-link to="/main/probice3D">3D地图使用</router-link>
       <router-link to="/login" style="position: absolute;right: 5px;">退出</router-link>
     </div>
     <div id="nav-body">
