@@ -31,7 +31,10 @@
                              title: {
                                text: '吕梁市3D地图',
                                left: 'center',
-                               top: 20
+                               top: 20,
+                               textStyle: {
+                                 color: "rgba(56, 29, 220, 1)"
+                              },
                              },
                              legend:{
                                show:true,
