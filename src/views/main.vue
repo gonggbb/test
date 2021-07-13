@@ -6,8 +6,9 @@
       <router-link to="/main/echart">echart使用</router-link>
       <router-link to="/main/audio">音频使用</router-link>
       <router-link to="/main/video">视频使用</router-link>
-      <router-link to="/main/probice3D">3D地图使用</router-link>
-      <router-link to="/login" style="position: absolute;right: 5px;">退出</router-link>
+      <router-link to="/main/probice3D">3D地图省级使用</router-link>
+      <router-link to="/main/city3D">3D地图市级使用</router-link>
+      <router-link to="/login" style="position: absolute;right: 5px;"> {{user.name}} 退出</router-link>
     </div>
     <div id="nav-body">
        <router-view/>
@@ -15,6 +16,16 @@
     </div>
   </div>
 </template>
+
+<script>
+        import { mapState,  } from 'vuex'
+        export default {
+          computed: {
+          	...mapState(['user',]),
+          },
+        }
+</script>
+
 <style lang="scss">
 #app-main{
   font-family: Avenir, Helvetica, Arial, sans-serif;

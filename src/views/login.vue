@@ -32,6 +32,8 @@
 </template>
 
 <script>
+        import { mapMutations,  } from 'vuex'
+        import { SET_USER } from "@/store/mutation-types.js";
         export default {
                 data() {
                         return {
@@ -42,11 +44,14 @@
                         }
                 },
                 methods: {
+                         ...mapMutations(['SET_USER']),
                         login() {
                            if(this.account=="admin"&&this.password=="123456"){
                                      console.log('this.account',this.account,this.password)
                                      this.loginStatus = false
                                      localStorage.setItem('loginSuccess',"login");
+                                     this.SET_USER({name:this.account})
+                                      console.log(this.$store)
                                      this.$router.push({name:'main'})
                            }else{
                                 this.loginStatus  = true

@@ -1,37 +1,35 @@
 <template>
-        <div class="shanxi3D">
-             <p>geoJSON获取地址   <a :href="href">跳转地址</a></p>
+        <div class="lvliang3D">
              <div id="echarts" ref="container"></div>
         </div>
 </template>
 
 <script>
-  import shanJson from '../json/shanxi.json';
+  import lvliang from '../json/lvliang.json';
    import  'echarts-gl';
         export default {
                 data() {
                         return {
                                	option: {},
-                                href:' http://datav.aliyun.com/tools/atlas/#&lat=33.521903996156105&lng=104.29849999999999&zoom=4',
                         }
                 },
                 methods: {
                       init() {
-		               	       let me = this;
+		           let me = this;
                            var barData = [
                              {
-                               "name": "太原市",
+                               "name": "离石区",
                                "value": [
-                                 112.48699,
-                                 37.94036,
+                                 111.126742,
+                                 37.531343,
                                  200
                                ]
                              }
                            ];
-                           this.$echarts.registerMap('shanxi', shanJson);
+                           this.$echarts.registerMap('lvliang', lvliang);
                            me.option = {
                              title: {
-                               text: '山西省3D地图',
+                               text: '吕梁市3D地图',
                                left: 'center',
                                top: 20
                              },
@@ -48,7 +46,7 @@
                                }
                              },
                              geo3D: {
-                               map: 'shanxi',
+                               map: 'lvliang',
                                boxWidth:50,
                                boxHeight:6,
                                boxDepth:90,
@@ -122,7 +120,7 @@
                              series: [
                                {
                                  type: 'bar3D',
-                                 name:'太原市',
+                                 name:'离市区',
                                  coordinateSystem: 'geo3D',
                                  itemStyle: {
                                    color: 'red',
@@ -142,16 +140,12 @@
                            initEcharts.setOption(me.option);
                            //.getZr()是监听的是整块地图画布。
                            initEcharts.getZr().on('click', function(e) {//设置点击事件
-                              //  console.log( me.$refs.container.firstElementChild)
+                               console.log( me.$refs.container.firstElementChild)
                                let isinside = me.$refs.container.firstElementChild.style.cursor;
 	                             if(me.area!==''&&isinside=="pointer"){
-                                  // console.log(me.area)
-                                 // query类似 get, 跳转之后页面 url后面会拼接参数,类似?id=1, 非重要性的可以这样传, 密码之类还是用params刷新页面id还在
-                                 //  params类似 post, 跳转之后页面 url后面不会拼接参数 , 但是刷新页面id 会消失
-                                 if(me.area=="吕梁市"){
-                                    me.$router.push({name:'city3D',params: {name:me.area}})
-                                 }
-                               }
+	                             	// setmapArea(area);//setState(我用的是hooks)
+                                  console.log(me.area)
+	                             }
                            })
 			}
 
@@ -160,7 +154,12 @@
 		},
 		mounted() {
 			this.$nextTick(() => {
-				this.init();
+				                            this.init();
+                                switch(this.$route.params.name){
+                                    case '吕梁市': 
+				                            this.init();
+                                     break
+                                }
 			})
 		},
                 
@@ -168,7 +167,7 @@
 </script>
 
 <style lang="scss" scoped>
-.shanxi3D{
+.lvliang3D{
        background:#000066;
        opacity: 0.8;
 }
